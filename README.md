@@ -1,3 +1,5 @@
+# I. systemd-basics
+
 ## 1. First steps
 
 * 🌞 s'assurer que `systemd` est PID1
@@ -60,6 +62,7 @@ Vérification:
 `nmcli con show`
 Détailler une interface : `nmcli con show enp0s8`
 Modification à faire pour accèder en SSH à la VM : `nano /etc/sysconfig/network-scripts/ifcfg-enp0s8`
+Infos DHCP récupérée par le Network Manager : `nmcli con show enp0s3 | grep DHCP`
 
 ### `systemd-networkd`
 
@@ -99,14 +102,11 @@ SESSION  UID USER SEAT TTY
 ## 6. Gestion d'unité basique (services)
 
 
-* 🌞 trouver l'unité associée au processus `chronyd`
+Lancer chronyd `systemcl start chronyd`
+Puis pour l'unité associée à chronyd : `ps -e -o pid,cmd,unit | grep chronyd`
 
+# II. Boot et Logs
 
+Pour générer le graphique, c'est la commande suivante :
 
-
-
-
-
-
-
-
+`systemd-analyze plot > graphe.svg`
